@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Video Feed</title>
+    <style>
+        .video-feed {
+            width: 100%;
+            max-width: 800px;  /* Set a maximum width for the video */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Video Feed</h1>
+    <img src="{{ url_for('video_feed') }}" class="video-feed">
+</body>
+</html>
+

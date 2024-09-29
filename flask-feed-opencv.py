@@ -17,12 +17,19 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
 app = Flask(__name__)
 
 picam2 = Picamera2()
+# camera_config = picam2.create_still_configuration(main={"size": (1280, 720)})  # Set resolution to 1280x720
+camera_config = picam2.create_still_configuration(main={"size": (640, 480)})  # Lower resolution (640x480)
+
+picam2.configure(camera_config)
 picam2.start()
 
 def gen_frames():
     while True:
         # Capture the frame from the Pi camera
         frame = picam2.capture_array()
+
+        # Ensure the frame is in RGB format (OpenCV captures in BGR)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
         # Ensure the frame has 3 channels (convert RGBA to RGB if necessary)
         if frame.shape[2] == 4:  # Check if there are 4 channels (RGBA)
@@ -66,7 +73,7 @@ def video_feed():
 
 @app.route('/')
 def index():
-    return "Stream available at /video_feed"
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
