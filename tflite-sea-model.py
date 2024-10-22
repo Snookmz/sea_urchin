@@ -5,7 +5,7 @@ import numpy as np
 import tflite_runtime.interpreter as tflite
 
 # Load TensorFlow Lite model
-interpreter = tflite.Interpreter(model_path='models/lego_sea_urchin.tflite')  # Replace with your TFLite model path
+interpreter = tflite.Interpreter(model_path='models/real_sea_urchin.tflite')  # Replace with your TFLite model path
 interpreter.allocate_tensors()
 
 # Get input and output details
