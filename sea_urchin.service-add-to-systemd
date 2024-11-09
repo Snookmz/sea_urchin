@@ -1,0 +1,14 @@
+[Unit]
+Description=Sea Urchin Detection with Flask and LED Control
+After=network.target
+
+[Service]
+ExecStart=/home/miles/sea_urchin/env/bin/python /home/miles/sea_urchin/blink-with-no-feed.py
+WorkingDirectory=/home/miles/sea_urchin
+Restart=always
+User=miles
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
+
